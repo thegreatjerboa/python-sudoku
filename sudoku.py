@@ -30,9 +30,9 @@ def main():
     # print(getSquare(board, 7))
     # print(getSquare(board, 8))
     # print()
-    # print(validateSegement(range(0, 9)))
-    # print(validateSegement(range(1, 10)))
-    # print(validateSegement([0, 0, 0,  0, 0, 0,  0, 1, 1]))
+    # print(validateSegment(range(0, 9)))
+    # print(validateSegment(range(1, 10)))
+    # print(validateSegment([0, 0, 0,  0, 0, 0,  0, 1, 1]))
     solveBoard(board)
 
 
@@ -54,14 +54,14 @@ def solveBoard(board):
 
 
 def validateBoard(board):
-    status = [validateSegement(seg) for seg in sum([[getRow(board, i), getCol(board, i), getSquare(board, i)]for i in range(0, 9)], [])]
+    status = [validateSegment(seg) for seg in sum([[getRow(board, i), getCol(board, i), getSquare(board, i)]for i in range(0, 9)], [])]
     # print(status)
     if all([item == BoardStatus.solved for item in status]):
         return BoardStatus.solved
     return BoardStatus.invalid if any([item == BoardStatus.invalid for item in status]) else BoardStatus.partial
 
 
-def validateSegement(segment):
+def validateSegment(segment):
     seen = set()
     seen_add = seen.add
     for item in [item for item in segment if item != 0]:
